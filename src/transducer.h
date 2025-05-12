@@ -1,7 +1,6 @@
 #ifndef TRANSDUCER_H
 #define TRANSDUCER_H
 
-#include <stdio.h>
 #include <vector>
 #include <complex>
 #include <unordered_set>

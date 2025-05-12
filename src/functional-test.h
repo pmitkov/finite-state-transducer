@@ -9,6 +9,7 @@
 
 #include "transducer.h"
 #include "string-util.h"
+#include "trim.h"
 
 #define X first
 #define Y second

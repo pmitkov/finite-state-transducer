@@ -26,12 +26,12 @@ char BUFF[BUFF_SIZE];
     t = trim(t);
     vector<bool> V = markInfiniteNodes(t);
     if (checkInfinitelyAmbiguous(t)) {
-        printf("Transducer is infinitely ambiguous\n");
+        printf("Language is infinitely ambiguous\n");
     } else {
         if (checkFunctionality(t, V)) {
-        printf("Transducer is functional\n");
+        printf("Language is functional\n");
         } else {
-            printf("Transducer is not functional\n");
+            printf("Language is not functional\n");
         }
     }
     while (true) {
