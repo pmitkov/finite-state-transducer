@@ -1,24 +1,8 @@
 #ifndef CONSTRUCTIONS
 #define CONSTRUCTIONS
 
-#include <stdio.h>
 #include <vector>
-#include <stack>
-#include <functional>
-#include <numeric>
-#include <complex>
-#include <queue>
-#include <map>
-#include <unordered_map>
-#include <list>
-#include <set>
-#include <unordered_set>
-#include <assert.h>
-#include <cstring>
-#include <sstream>
 #include <string>
-#include <algorithm>
-#include <ctime>
 
 #include "transducer.h"
 #include "string-util.h"

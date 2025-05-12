@@ -4,21 +4,8 @@
 #include <stdio.h>
 #include <vector>
 #include <stack>
-#include <functional>
-#include <numeric>
-#include <complex>
-#include <queue>
-#include <map>
-#include <unordered_map>
-#include <list>
-#include <set>
-#include <unordered_set>
 #include <assert.h>
-#include <cstring>
-#include <sstream>
 #include <string>
-#include <algorithm>
-#include <ctime>
 #include <regex>
 
 #include "transducer.h"
@@ -59,13 +46,13 @@ vector<string> infixToPostfix(const string& expr) {
         char c = expr[i];
         if (isOperator(c)) {
             while (!ops.empty() && ops.top() != '(' && opPrecedence(ops.top()) > opPrecedence(c)) {
-                res.push_back(string(1, ops.top()));
+                res.emplace_back(1, ops.top());
                 ops.pop();
             }
             ops.push(c);
         } else if (c == ')') {
             while (ops.top() != '(') {
-                res.push_back(string(1, ops.top()));
+                res.emplace_back(1, ops.top());
                 ops.pop();
             }
             ops.pop();
@@ -81,7 +68,7 @@ vector<string> infixToPostfix(const string& expr) {
         }
     }
     while (!ops.empty()) {
-        res.push_back(string(1, ops.top()));
+        res.emplace_back(1, ops.top());
         ops.pop();
     }
     return res;

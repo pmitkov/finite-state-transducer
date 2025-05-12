@@ -3,24 +3,10 @@
 
 #include <stdio.h>
 #include <vector>
-#include <stack>
-#include <functional>
-#include <numeric>
 #include <complex>
-#include <queue>
-#include <map>
-#include <unordered_map>
-#include <list>
-#include <set>
 #include <unordered_set>
 #include <assert.h>
-#include <cstring>
-#include <sstream>
 #include <string>
-#include <algorithm>
-#include <ctime>
-
-#include "parser.h"
             
 #define X first
 #define Y second
@@ -44,7 +30,7 @@ unordered_set<string> accepting(const Transducer& T, const string& word, const v
     unordered_set<string> res;
     for (auto& i : T.I) {
         if (!infNodes[i]) {
-            S.push_back(make_tuple(i, 0, ""));
+            S.emplace_back(i, 0, "");
         }
     }
     while (!S.empty()) {
@@ -63,12 +49,12 @@ unordered_set<string> accepting(const Transducer& T, const string& word, const v
                 }
                 if (delta.X.X == '$') {
                     assert(delta.X.Y != '$');
-                    SC.push_back(make_tuple(delta.Y, sIdx, get<2>(t) + delta.X.Y)); 
+                    SC.emplace_back(delta.Y, sIdx, get<2>(t) + delta.X.Y);
                 } else if (sIdx < word.length() && delta.X.X == word[sIdx]) {
                     if (delta.X.Y == '$') {
-                        SC.push_back(make_tuple(delta.Y, sIdx + 1, get<2>(t)));
+                        SC.emplace_back(delta.Y, sIdx + 1, get<2>(t));
                     } else {
-                        SC.push_back(make_tuple(delta.Y, sIdx + 1, get<2>(t) + delta.X.Y));
+                        SC.emplace_back(delta.Y, sIdx + 1, get<2>(t) + delta.X.Y);
                     }
                 }
             }
@@ -76,10 +62,6 @@ unordered_set<string> accepting(const Transducer& T, const string& word, const v
         S = SC;
     }
     return res;
-}
-
-Transducer getTransducer(const string& expr) {
-    return trim(epsilon_elimination(parseRegex(s)));
 }
 
 #endif
