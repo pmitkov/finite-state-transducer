@@ -16,7 +16,7 @@
 
 using namespace std;
 
-void tarjan(int v, const vector<vector<pair<pair<char,char>,int>>> &D, vector<int>& ID, stack<int>& S, vector<int>& LOW, vector<bool>& ON, int& cnt) {
+inline void tarjan(int v, const vector<vector<pair<pair<char,char>,int>>> &D, vector<int>& ID, stack<int>& S, vector<int>& LOW, vector<bool>& ON, int& cnt) {
     ID[v] = LOW[v] = cnt++;
     ON[v] = true;
     S.push(v);
@@ -41,7 +41,7 @@ void tarjan(int v, const vector<vector<pair<pair<char,char>,int>>> &D, vector<in
     }
 }
 
-vector<bool> markInfiniteComps(const vector<vector<pair<pair<char,char>,int>>>& D, vector<int>& LOW, int cCount) {
+inline vector<bool> markInfiniteComps(const vector<vector<pair<pair<char,char>,int>>>& D, vector<int>& LOW, int cCount) {
     vector<bool> iC(cCount);
     for (int i = 0; i < D.size(); i++) {
         for (auto& d : D[i]) {
@@ -53,7 +53,7 @@ vector<bool> markInfiniteComps(const vector<vector<pair<pair<char,char>,int>>>& 
     return iC;
 }
 
-vector<bool> markInfiniteNodes(const Transducer& t) {
+inline vector<bool> markInfiniteNodes(const Transducer& t) {
     int n = t.D.size();
     vector<int> ID(n);
     vector<int> LOW(n);
@@ -75,7 +75,7 @@ vector<bool> markInfiniteNodes(const Transducer& t) {
     return infNodes;
 }
 
-vector<pair<string,int>>& getEpsClosureForward(int v, const vector<vector<pair<pair<char,char>,int>>>& D, unordered_map<int,vector<pair<string,int>>>& DP) {
+inline vector<pair<string,int>>& getEpsClosureForward(int v, const vector<vector<pair<pair<char,char>,int>>>& D, unordered_map<int,vector<pair<string,int>>>& DP) {
     if (DP.count(v)) {
         return DP[v];
     }
@@ -92,7 +92,7 @@ vector<pair<string,int>>& getEpsClosureForward(int v, const vector<vector<pair<p
     return DP[v] = res;
 }
 
-vector<pair<string,int>>& getEpsClosureBackward(int v, const vector<vector<pair<pair<char,char>,int>>>& DT, unordered_map<int,vector<pair<string,int>>>& DP) {
+inline vector<pair<string,int>>& getEpsClosureBackward(int v, const vector<vector<pair<pair<char,char>,int>>>& DT, unordered_map<int,vector<pair<string,int>>>& DP) {
     if (DP.count(v)) {
         return DP[v];
     }
@@ -109,7 +109,7 @@ vector<pair<string,int>>& getEpsClosureBackward(int v, const vector<vector<pair<
     return DP[v] = res;
 }
 
-WTransducer buildWTransducer(const Transducer& t) {
+inline WTransducer buildWTransducer(const Transducer& t) {
     unordered_map<int,vector<pair<string,int>>> DPF;
     unordered_map<int,vector<pair<string,int>>> DPB;
     vector<vector<pair<pair<char,char>,int>>> DT(t.D.size());
@@ -146,7 +146,7 @@ WTransducer buildWTransducer(const Transducer& t) {
     return t1;
 }
 
-WTransducer buildSquaredOutputTransducer(const WTransducer& t) {
+inline WTransducer buildSquaredOutputTransducer(const WTransducer& t) {
     WTransducer t1;
     int n = t.D.size();
     t1.D.resize(n * n);
@@ -174,7 +174,7 @@ WTransducer buildSquaredOutputTransducer(const WTransducer& t) {
     return t1;
 }
 
-bool checkInfinitelyAmbiguous(const Transducer& t) {
+inline bool checkInfinitelyAmbiguous(const Transducer& t) {
     vector<bool> V = markInfiniteNodes(t);
     for (auto b : V) {
         if (b) {
@@ -184,7 +184,7 @@ bool checkInfinitelyAmbiguous(const Transducer& t) {
     return false;
 }
 
-bool checkBalancible(const WTransducer& t) {
+inline bool checkBalancible(const WTransducer& t) {
     unordered_map<int,pair<string,string>> M;
     for(auto& i : t.I) {
         M[i] = {"", ""};
@@ -214,9 +214,9 @@ bool checkBalancible(const WTransducer& t) {
         }
     }
     return true;
-} 
+}
 
-bool checkFunctionality(const Transducer& t, const vector<bool>& infNodes) {
+inline bool checkFunctionality(const Transducer& t, const vector<bool>& infNodes) {
     unordered_set<string> s = accepting(t, "", infNodes);
     // Check if empty word is functional
     if (s.size() > 1) {

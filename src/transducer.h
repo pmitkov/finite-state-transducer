@@ -24,7 +24,7 @@ struct WTransducer {
     unordered_set<int> I;
 };
 
-unordered_set<string> accepting(const Transducer& T, const string& word, const vector<bool>& infNodes) {
+inline unordered_set<string> accepting(const Transducer& T, const string& word, const vector<bool>& infNodes) {
     vector<tuple<int, int, string>> S;
     unordered_set<string> res;
     for (auto& i : T.I) {

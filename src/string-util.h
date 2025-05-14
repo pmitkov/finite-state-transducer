@@ -10,7 +10,7 @@
 
 using namespace std;
 
-vector<pair<char,char>> split(const string& a, const string& b) {
+inline vector<pair<char,char>> split(const string& a, const string& b) {
     vector<pair<char,char>> res;
     for (int i = 0; i < max(a.length(), b.length()); i++) {
         res.emplace_back('$', '$');
@@ -24,7 +24,7 @@ vector<pair<char,char>> split(const string& a, const string& b) {
     return res;
 }
 
-pair<string,string> advanceFunc(const pair<string,string>& a, const pair<string,string>& b) {
+inline pair<string,string> advanceFunc(const pair<string,string>& a, const pair<string,string>& b) {
     string l = a.X + b.X;
     string r = a.Y + b.Y;
     int len = 0;
@@ -34,11 +34,11 @@ pair<string,string> advanceFunc(const pair<string,string>& a, const pair<string,
     return {l.substr(len), r.substr(len)};
 }
 
-bool isBalancible(const pair<string,string>& p) {
+inline bool isBalancible(const pair<string,string>& p) {
     return p.X == "" || p.Y == "";
 }
 
-bool isEmptyAdvance(const pair<string,string>& p) {
+inline bool isEmptyAdvance(const pair<string,string>& p) {
     return p.X == "" && p.Y == "";
 }
 

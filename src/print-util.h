@@ -13,7 +13,7 @@
 
 using namespace std;
 
-void printTransducer(const Transducer& t, const vector<bool>& infNodes, const string& file) {
+inline void printTransducer(const Transducer& t, const vector<bool>& infNodes, const string& file) {
     FILE* fp = fopen(file.c_str(), "w");
     fprintf(fp, "digraph finite_state_machine {\n");
     fprintf(fp, "fontname=\"Helvetica,Arial,sans-serif\"\n");
@@ -52,7 +52,7 @@ void printTransducer(const Transducer& t, const vector<bool>& infNodes, const st
     fclose(fp);
 }
 
-void printTransducer(const Transducer& t, const string& file) {
+inline void printTransducer(const Transducer& t, const string& file) {
     FILE* fp = fopen(file.c_str(), "w");
     fprintf(fp, "digraph finite_state_machine {\n");
     fprintf(fp, "fontname=\"Helvetica,Arial,sans-serif\"\n");
@@ -81,7 +81,7 @@ void printTransducer(const Transducer& t, const string& file) {
     fclose(fp);
 }
 
-void printTransducer(const WTransducer& t, const string& file) {
+inline void printTransducer(const WTransducer& t, const string& file) {
     FILE* fp = fopen(file.c_str(), "w");
     fprintf(fp, "digraph finite_state_machine {\n");
     fprintf(fp, "fontname=\"Helvetica,Arial,sans-serif\"\n");

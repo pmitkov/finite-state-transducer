@@ -1,7 +1,6 @@
 #ifndef TRIM_H
 #define TRIM_H
 
-#include <stdio.h>
 #include <vector>
 #include <queue>
 #include <unordered_map>
@@ -15,7 +14,7 @@
 
 using namespace std;
 
-Transducer trim(const Transducer& t) {
+inline Transducer trim(const Transducer& t) {
     unordered_set<int> F;
     unordered_set<int> B;
     queue<int> QF;
@@ -88,7 +87,7 @@ Transducer trim(const Transducer& t) {
     return t1;
 }
 
-WTransducer trim(const WTransducer& t) {
+inline WTransducer trim(const WTransducer& t) {
     unordered_set<int> F;
     unordered_set<int> B;
     queue<int> QF;

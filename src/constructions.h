@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Transducer get(const pair<string,string>& p) {
+inline Transducer get(const pair<string,string>& p) {
     vector<pair<char,char>> C = split(p.X, p.Y);
     Transducer t;
     t.D.resize(C.size() + 1);
@@ -24,7 +24,7 @@ Transducer get(const pair<string,string>& p) {
     return t;
 }
 
-Transducer tUnion(const Transducer& t1, const Transducer& t2) {
+inline Transducer tUnion(const Transducer& t1, const Transducer& t2) {
     Transducer t;
     t.D.resize(t1.D.size() + t2.D.size() + 1);
     t.D[0].push_back({{'$', '$'}, 1});
@@ -49,7 +49,7 @@ Transducer tUnion(const Transducer& t1, const Transducer& t2) {
     return t;
 }
 
-Transducer kleeneStar(const Transducer& t1) {
+inline Transducer kleeneStar(const Transducer& t1) {
     Transducer t;
     t.D.resize(t1.D.size() + 1);
     t.D[0].push_back({{'$', '$'}, 1});
@@ -69,7 +69,7 @@ Transducer kleeneStar(const Transducer& t1) {
     return t;
 }
 
-Transducer monoidalProduct(const Transducer& t1, const Transducer& t2) {
+inline Transducer monoidalProduct(const Transducer& t1, const Transducer& t2) {
     Transducer t;
     t.D.resize(t1.D.size() + t2.D.size());
     for (int i = 0; i < t1.D.size(); i++) {

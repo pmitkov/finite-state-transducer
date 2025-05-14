@@ -1,7 +1,6 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include <stdio.h>
 #include <vector>
 #include <stack>
 #include <assert.h>
@@ -16,14 +15,14 @@
 
 using namespace std;
 
-string sanitize(const string& expr) {
+inline string sanitize(const string& expr) {
     string res = expr;
     res = regex_replace(res, regex("\\)\\("), ").(");
     res = regex_replace(res, regex("\\)\\*\\("), ")*.(");
     return res; 
 }
 
-int opPrecedence(char op) {
+inline int opPrecedence(char op) {
     if (op == '*') {
         return 3;
     } else if (op == '.') {
@@ -35,11 +34,11 @@ int opPrecedence(char op) {
     }
 }
 
-bool isOperator(char c) {
+inline bool isOperator(char c) {
     return c == '*' || c == '|' || c == '.';
 }
 
-vector<string> infixToPostfix(const string& expr) {
+inline vector<string> infixToPostfix(const string& expr) {
     vector<string> res;
     stack<char> ops;
     for (int i = 0; i < expr.length(); i++) {
@@ -74,7 +73,7 @@ vector<string> infixToPostfix(const string& expr) {
     return res;
 }
 
-pair<string,string> splitExpr(const string& expr) {
+inline pair<string,string> splitExpr(const string& expr) {
     string l;
     string r;
     int idx = 0;
@@ -94,7 +93,7 @@ pair<string,string> splitExpr(const string& expr) {
     return {l, r};
 }
 
-Transducer parseRegex(const string& regex) {
+inline Transducer parseRegex(const string& regex) {
     if (regex == "()") {
         return Transducer();
     }

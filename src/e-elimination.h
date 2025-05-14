@@ -12,7 +12,7 @@
 
 using namespace std;
 
-vector<unordered_set<int>> epsilon_closure(const Transducer& t) {
+inline vector<unordered_set<int>> epsilon_closure(const Transducer& t) {
     vector<unordered_set<int>> res(t.D.size());
     for (int i = 0; i < t.D.size(); i++) {
         res[i].insert(i);
@@ -32,7 +32,7 @@ vector<unordered_set<int>> epsilon_closure(const Transducer& t) {
     return res;
 }
 
-Transducer epsilon_elimination(const Transducer& t) {
+inline Transducer epsilon_elimination(const Transducer& t) {
     vector<unordered_set<int>> C = epsilon_closure(t);
     Transducer t1;
     t1.D.resize(t.D.size());
