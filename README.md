@@ -4,7 +4,7 @@
 
 A finite state transducer (FST) is a type of finite state machine that produces output based on a sequence of inputs. While a regular finite state automaton (FSA) only accepts or rejects input strings, an FST maps input strings to output strings. Similar to (FSA), the relations recognizable with a (FST) can be expressed with an an expression called regular relation expression. The syntax for regular relation expressions is as follows:
 
-1. $ (x:y)$ is a R.R.E., for $x\in\Sigma^*,y\in\Sigma^*$. 
+1. $(x:y)$ is a R.R.E., for $`x\in\Sigma^*,y\in\Sigma^*`$
 2. If $\alpha,\beta$ are R.R.E, then so are $(\alpha)^*, (\alpha)(\beta), (\alpha)|(\beta)$. The operations are the standard Kleene star, concatenation and union.
 
 ### Build sources 
